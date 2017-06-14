@@ -20,10 +20,10 @@ def getYWBlog():
 	return u"题目："+a[0].string+"\n"+"http://www.yinwang.org"+a[0].attrs["href"]
 
 def buildHelpMessage():
-	return u"目前支持功能:\n"+u"blog:--->获取王垠最新博客"
+	return u"目前支持功能:\n"+u"blog:--->获取王垠最新博客\n"
 
 def run():
-	itchat.auto_login(hotReload=True,enableCmdQR=2)
+	itchat.auto_login(hotReload=True,enableCmdQR=False)
 	itchat.send(u'输入help,显示帮助信息', 'filehelper') 
 	itchat.run()
 
