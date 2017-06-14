@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 def music_player(msg):
     if msg['ToUserName'] != 'filehelper': return
     if msg['Text'].strip() == u'blog':
-        itchat.send(getYWBlog(),'filehelper')
+        itchat.send(getYWBlog(), 'filehelper')
     elif msg['Text'].strip() == u'help':
         itchat.send(buildHelpMessage(), 'filehelper')
     else:
@@ -34,6 +34,6 @@ def ec():
     print('exit')
 
 
-itchat.auto_login(hotReload=True, enableCmdQR=False, loginCallback=lc, exitCallback=ec)
+itchat.auto_login(hotReload=True, enableCmdQR=2, loginCallback=lc, exitCallback=ec)
 itchat.send(u'输入help,显示帮助信息', 'filehelper')
 itchat.run()
