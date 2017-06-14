@@ -1,19 +1,28 @@
 #coding=utf8
 import itchat
- 
+import requests
+from bs4 import BeautifulSoup
 @itchat.msg_register(itchat.content.TEXT)
 def music_player(msg):
     if msg['ToUserName'] != 'filehelper': return
-    if msg['Text'] == u'关闭':
-        itchat.send(u'音乐已关闭', 'filehelper')
-    if msg['Text'] == u'帮助':
-        itchat.send(u'帮助信息', 'filehelper')
-    else:
-        itchat.send(u'其他信息', 'filehelper')
+    if msg['Text'] == u'blog':
+        itchat.send(getYWBlog(), 'filehelper')
+    if msg['Text'] == u'help':
+        itchat.send(buildHelpMessage(), 'filehelper')
+
+
+def getYWBlog():
+	r = requests.get('http://www.yinwang.org')
+	soup = BeautifulSoup(r.text,"html.parser")
+	a = soup.select(".list-group-item a")
+	return u"题目："+a[0].string+"\n"+"http://www.yinwang.org"+a[0].attrs["href"]
+
+def buildHelpMessage():
+	return u"目前支持功能:\n"+u"blog:--->获取王垠最新博客\n"
 
 def run():
 	itchat.auto_login(hotReload=True,enableCmdQR=2)
-	itchat.send(u'输入 帮助,显示帮助信息', 'filehelper') 
+	itchat.send(u'输入help,显示帮助信息', 'filehelper') 
 	itchat.run()
 
 if __name__ == '__main__':
