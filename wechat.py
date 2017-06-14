@@ -22,10 +22,6 @@ def getYWBlog():
 def buildHelpMessage():
 	return u"目前支持功能:\n"+u"blog:--->获取王垠最新博客\n"
 
-def run():
-	itchat.auto_login(hotReload=True,enableCmdQR=False)
-	itchat.send(u'输入help,显示帮助信息', 'filehelper') 
-	itchat.run()
-
-if __name__ == '__main__':
-	run();
+itchat.auto_login(hotReload=True,enableCmdQR=False)
+itchat.send(u'输入help,显示帮助信息', 'filehelper') 
+itchat.run()
