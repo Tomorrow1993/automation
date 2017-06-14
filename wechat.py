@@ -12,7 +12,7 @@ def music_player(msg):
         itchat.send(u'其他信息', 'filehelper')
 
 def run():
-	itchat.auto_login(True)
+	itchat.auto_login(hotReload=True,enableCmdQR=2)
 	itchat.send(u'输入 帮助,显示帮助信息', 'filehelper') 
 	itchat.run()
 
