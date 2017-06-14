@@ -5,10 +5,12 @@ from bs4 import BeautifulSoup
 @itchat.msg_register(itchat.content.TEXT)
 def music_player(msg):
     if msg['ToUserName'] != 'filehelper': return
-    if msg['Text'] == u'blog':
-        itchat.send(getYWBlog(), 'filehelper')
-    if msg['Text'] == u'help':
-        itchat.send(buildHelpMessage(), 'filehelper')
+    if msg['Text'].strip() == u'blog':
+		itchat.send(getYWBlog(), 'filehelper')
+    elif msg['Text'].strip() == u'help':
+		itchat.send(buildHelpMessage(), 'filehelper')
+    else:
+    	itchat.send(buildHelpMessage(), 'filehelper')
 
 
 def getYWBlog():
@@ -18,7 +20,7 @@ def getYWBlog():
 	return u"题目："+a[0].string+"\n"+"http://www.yinwang.org"+a[0].attrs["href"]
 
 def buildHelpMessage():
-	return u"目前支持功能:\n"+u"blog:--->获取王垠最新博客\n"
+	return u"目前支持功能:\n"+u"blog:--->获取王垠最新博客"
 
 def run():
 	itchat.auto_login(hotReload=True,enableCmdQR=2)
