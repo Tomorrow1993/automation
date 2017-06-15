@@ -1,7 +1,7 @@
 # coding=utf8
 import itchat
 import net
-
+import tuling
 
 @itchat.msg_register(itchat.content.TEXT)
 def music_player(msg):
@@ -14,6 +14,9 @@ def music_player(msg):
             itchat.send(net.get_yw_blog(), 'filehelper')
     elif content == u'help':
         itchat.send(buildHelpMessage(), 'filehelper')
+    elif u'ask' in content:
+        message = content.split('_', 1)[1]
+        itchat.send(tuling.tuling(message,msg['ToUserName']), 'filehelper')
     else:
         itchat.send(buildHelpMessage(), 'filehelper')
 
