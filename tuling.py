@@ -1,5 +1,6 @@
 # coding=utf8
 import requests
+import json
 
 
 def tuling(message, user_id):
@@ -7,8 +8,12 @@ def tuling(message, user_id):
                'userid': user_id,
                'info': message.encode('utf-8'),
                'loc': u'上海'}
-    r = requests.post('http://www.tuling123.com/openapi/api', payload)
-    if r.status_code == requests.codes.ok:
-        return r.json().text
-    else:
-        return u'万恶的网络又被劫持了'
+    try:
+        r = requests.post('http://www.tuling123.com/openapi/api', payload, timeout=8)
+        if r.status_code == requests.codes.ok:
+            print r.text
+            return json.loads(r.text)['text']
+        else:
+            return u'万恶的网络又被劫持了'
+    except(requests.exceptions.RequestException):
+        return u'万恶的网络又出问题了'
