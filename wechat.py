@@ -11,8 +11,7 @@ tuling_anable = False  # 是否开启图灵机器人
 def music_player(msg):
     global tuling_anable
     user_name = msg['FromUserName']
-    print msg.user
-    if user_name not in whitelist.a: return
+    # if user_name not in whitelist.a: return
     content = msg['Text'].strip()
     if content == 'start':
         tuling_anable = True
