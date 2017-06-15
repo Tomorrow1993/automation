@@ -19,7 +19,9 @@ def music_player(msg):
 
 
 def buildHelpMessage():
-    return u"目前支持功能:\n" + u"blog:--->获取王垠最新博客\n"
+    return u"目前支持功能:\n" \
+           + u"blog:--->获取王垠最新博客\n"\
+           + u"blog list:--->获取王垠所有博客"
 
 
 itchat.auto_login(hotReload=True, enableCmdQR=2)
