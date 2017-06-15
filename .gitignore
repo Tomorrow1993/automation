@@ -1,3 +1,6 @@
 itchat.pkl
 .idea/
 QR.png
+.idea/*
+.idea/vcs.xml
+*.pyc
