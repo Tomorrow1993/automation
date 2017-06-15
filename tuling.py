@@ -11,7 +11,6 @@ def tuling(message, user_id):
     try:
         r = requests.post('http://www.tuling123.com/openapi/api', payload, timeout=8)
         if r.status_code == requests.codes.ok:
-            print r.text
             return json.loads(r.text)['text']
         else:
             return u'万恶的网络又被劫持了'
