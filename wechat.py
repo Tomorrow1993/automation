@@ -2,6 +2,7 @@
 import itchat
 import net
 import tuling
+import whitelist
 
 tuling_anable = False  # 是否开启图灵机器人
 
@@ -9,25 +10,27 @@ tuling_anable = False  # 是否开启图灵机器人
 @itchat.msg_register(itchat.content.TEXT)
 def music_player(msg):
     global tuling_anable
-    if msg['ToUserName'] != 'filehelper': return
+    user_name = msg['FromUserName']
+    print msg.user
+    if user_name not in whitelist.a: return
     content = msg['Text'].strip()
     if content == 'start':
         tuling_anable = True
-        itchat.send(u'已开启图灵机器人', 'filehelper')
+        msg.user.send(u'已开启图灵机器人')
     elif content == 'end':
         tuling_anable = False
-        itchat.send(u'已关闭图灵机器人', 'filehelper')
+        msg.user.send(u'已关闭图灵机器人')
     elif tuling_anable:
-        itchat.send(tuling.tuling(content, msg['ToUserName']), 'filehelper')
+        msg.user.send(tuling.tuling(content, user_name[-10:]))
     elif 'blog' in content:
         if 'list' in content:
-            itchat.send(net.get_yw_blog_list(), 'filehelper')
+            msg.user.send(net.get_yw_blog_list())
         else:
-            itchat.send(net.get_yw_blog(), 'filehelper')
+            msg.user.send(net.get_yw_blog())
     elif content == 'help':
-        itchat.send(buildHelpMessage(), 'filehelper')
+        msg.user.send(buildHelpMessage())
     else:
-        itchat.send(buildHelpMessage(), 'filehelper')
+        msg.user.send(buildHelpMessage())
 
 
 def buildHelpMessage():
