@@ -4,8 +4,6 @@ import net
 import tuling
 import whitelist
 
-tuling_anable = False  # 是否开启图灵机器人
-
 
 @itchat.msg_register(itchat.content.TEXT)
 def music_player(msg):
@@ -14,12 +12,12 @@ def music_player(msg):
     # if user_name not in whitelist.a: return
     content = msg['Text'].strip()
     if content == 'start':
-        tuling_anable = True
         msg.user.send(u'已开启图灵机器人')
+        whitelist.toggle_tuling(user_name, True)
     elif content == 'end':
-        tuling_anable = False
         msg.user.send(u'已关闭图灵机器人')
-    elif tuling_anable:
+        whitelist.toggle_tuling(user_name, False)
+    elif whitelist.tuling_enable(user_name):
         msg.user.send(tuling.tuling(content, user_name[-10:]))
     elif 'blog' in content:
         if 'list' in content:
