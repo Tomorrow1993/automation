@@ -26,7 +26,7 @@ def music_player(msg):
             msg.user.send(net.get_yw_blog())
     elif content == 'help':
         msg.user.send(buildHelpMessage())
-    else:
+    elif not whitelist.tuling_enable(user_name):
         msg.user.send(buildHelpMessage())
 
 
