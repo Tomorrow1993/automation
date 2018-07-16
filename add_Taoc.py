@@ -19,7 +19,7 @@ class AddTaoc(unittest.TestCase):
         desired_caps['clearSystemFiles'] = 'true'
         desired_caps['unicodeKeyboard'] = 'true'
         # desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
-        cls.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        cls.driver = webdriver.Remote('http://172.16.1.111:4723/wd/hub', desired_caps)
 
     @classmethod
     def tearDownClass(cls):
