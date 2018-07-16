@@ -19,7 +19,7 @@ class AddTaoc(unittest.TestCase):
         desired_caps['clearSystemFiles'] = 'true'
         desired_caps['unicodeKeyboard'] = 'true'
         # desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
-        cls.driver = webdriver.Remote('http://172.16.1.111:4723/wd/hub', desired_caps)
+        cls.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
     @classmethod
     def tearDownClass(cls):
@@ -72,10 +72,3 @@ class AddTaoc(unittest.TestCase):
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/yf_tv_save_to_set")))
         el12 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_tv_save_to_set")
         el12.click()
-
-
-'''
-if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(AddTaoc)
-    unittest.TextTestRunner(verbosity=2).run(suite)
-'''
