@@ -19,13 +19,13 @@ class AddTaoc(unittest.TestCase):
         desired_caps['clearSystemFiles'] = 'true'
         desired_caps['unicodeKeyboard'] = 'true'
         # desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
-        cls.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        cls.driver = webdriver.Remote(remote, desired_caps)
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
         
-    def test_case1(self):  # 进入西药首页
+    def test_case1_进入西药首页(self):  # 进入西药首页
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/tab_home_rb")))
         el1 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/tab_patient_rb")
         el1.click()
@@ -41,7 +41,7 @@ class AddTaoc(unittest.TestCase):
         else:
             self.driver.find_element_by_xpath("//*[@text='添加用药套餐']").click()
 
-    def test_case2(self):  # 搜索药品
+    def test_case2_搜索药品(self):  # 搜索药品
         el6 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_et_template_input")
         el6.send_keys("test")
         self.driver.hide_keyboard()
@@ -60,7 +60,7 @@ class AddTaoc(unittest.TestCase):
         el9 = self.driver.find_element_by_xpath("(//android.widget.ImageView[@content-desc='药品'])[1]")
         el9.click()
 
-    def test_case3(self):  # 加入用药套餐
+    def test_case3_加入用药套餐(self):  # 加入用药套餐
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/yf_btn_add_recommend")))
         el10 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_btn_add_recommend")
         el10.click()
@@ -68,7 +68,7 @@ class AddTaoc(unittest.TestCase):
         el11 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/menu_save")
         el11.click()
 
-    def test_case4(self):  # 加入推荐单
+    def test_case4_加入推荐单(self):  # 加入推荐单
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/yf_tv_save_to_set")))
         el12 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_tv_save_to_set")
         el12.click()
