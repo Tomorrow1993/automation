@@ -3,13 +3,13 @@
 # @author:Eddie
 # Project:使用unnitest框架编写测试用例思路
 import HTMLReport  # https://pypi.org/project/HTMLReport/
-from chat import *
-from login import *
-from payment import *
-from collect_drugs import *
+# from chat import *
+# from login import *
+# from payment import *
+# from collect_drugs import *
 from add_Taoc import *
-from search_drugs import *
-from zhongyao import *
+# from search_drugs import *
+# from zhongyao import *
 
 
 # 测试报告
