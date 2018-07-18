@@ -11,14 +11,15 @@ class AddTaoc(unittest.TestCase):
     def setUpClass(cls):
         desired_caps = {}
         desired_caps['platformName'] = 'Android'
-        desired_caps['platformVersion'] = '4.4.2'  # 6.0 4.4.2
-        desired_caps['deviceName'] = '1bf493ad'  # 1bf493ad c66d2f78 emulator-555444
+        desired_caps['platformVersion'] = '8.1.0'  # 6.0 4.4.2
+        desired_caps['deviceName'] = 'db172033'  # 1bf493ad c66d2f78 emulator-555444
         desired_caps['appPackage'] = 'com.kanchufang.privatedoctor'
         desired_caps['appActivity'] = '.activities.start.SplashActivity'
         desired_caps['noReset'] = 'true'
         desired_caps['clearSystemFiles'] = 'true'
         desired_caps['unicodeKeyboard'] = 'true'
-        # desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
+        desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
+        desired_caps['resetKeyboard'] = 'true'
         cls.driver = webdriver.Remote(remote, desired_caps)
 
     @classmethod
@@ -31,6 +32,7 @@ class AddTaoc(unittest.TestCase):
         el1.click()
         el2 = self.driver.find_element_by_xpath("//*[@text='test']")
         el2.click()
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/cib_2")))
         el3 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/cib_2")
         el3.click()
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/yf_recommend")))
