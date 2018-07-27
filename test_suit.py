@@ -28,7 +28,7 @@ if __name__ == '__main__':
     suite.addTests(tests)
 
     runner = HTMLReport.TestRunner(report_file_name='test',  # 报告文件名，默认“test”
-                                   output_path='/Users/liuchang/Desktop/report',  # 保存文件夹名，默认“report”
+                                   output_path='/Users/xrapp/Desktop/report',  # 保存文件夹名，默认“report”
                                    #verbosity=2,  # 控制台输出详细程度，默认 2
                                    title='测试报告',  # 报告标题，默认“测试报告”
                                    description='app登陆等一系列功能回归测试',  # 报告描述，默认“无测试描述”
