@@ -3,32 +3,41 @@
 # @author:Eddie
 # Project:使用unnitest框架编写测试用例思路
 import HTMLReport  # https://pypi.org/project/HTMLReport/
-# from chat import *
-# from login import *
-# from payment import *
-# from collect_drugs import *
+from chat import *
+from login import *
+from payment import *
+from collect_drugs import *
 from add_Taoc import *
-# from search_drugs import *
-# from zhongyao import *
+from search_drugs import *
+from zhongyao import *
 
 
 # 测试报告
 if __name__ == '__main__':
-
     suite = unittest.TestSuite()
-    # loader = unittest.TestLoader()
-    # suite.addTests(loader.loadTestsFromTestCase(Login))
-    # suite.addTests(loader.loadTestsFromTestCase(Chat))
-    # suite.addTests(loader.loadTestsFromTestCase(Payment))
-    # suite.addTests(loader.loadTestsFromTestCase(AddTaoc))
-    # suite.addTests(loader.loadTestsFromTestCase(SearchDrugs))
-    # suite.addTests(loader.loadTestsFromTestCase(Zhongyao))
-    # suite.addTests(loader.loadTestsFromTestCase(CollectDrugs))
+    loader = unittest.TestLoader()
+    suite.addTests(loader.loadTestsFromTestCase(Login))
+    suite.addTests(loader.loadTestsFromTestCase(Chat))
+    suite.addTests(loader.loadTestsFromTestCase(Payment))
+    suite.addTests(loader.loadTestsFromTestCase(CollectDrugs))
+    suite.addTests(loader.loadTestsFromTestCase(AddTaoc))
+    suite.addTests(loader.loadTestsFromTestCase(SearchDrugs))
+    suite.addTests(loader.loadTestsFromTestCase(Zhongyao))
+
+#  加入单独用例的方式
+    '''
     tests = [AddTaoc("test_case1_进入西药首页")]
     suite.addTests(tests)
-
+    
+#  另外一种执行多个class的方式
+    
+    loader = unittest.TestLoader()
+    suite1 = loader.loadTestsFromTestCase(AddTaoc)
+    suite2 = loader.loadTestsFromTestCase(CollectDrugs)
+    suite = unittest.TestSuite([suite1, suite2])
+'''
     runner = HTMLReport.TestRunner(report_file_name='test',  # 报告文件名，默认“test”
-                                   output_path='/Users/xrapp/Desktop/report',  # 保存文件夹名，默认“report”
+                                   output_path='/Users/liuchang/Desktop/report',  # 保存文件夹名，默认“report”
                                    #verbosity=2,  # 控制台输出详细程度，默认 2
                                    title='测试报告',  # 报告标题，默认“测试报告”
                                    description='app登陆等一系列功能回归测试',  # 报告描述，默认“无测试描述”

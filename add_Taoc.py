@@ -7,6 +7,7 @@ from config import *
 
 
 class AddTaoc(unittest.TestCase):
+
     @classmethod
     def setUpClass(cls):
         desired_caps = {}
@@ -19,13 +20,15 @@ class AddTaoc(unittest.TestCase):
         desired_caps['clearSystemFiles'] = 'true'
         desired_caps['unicodeKeyboard'] = 'true'
         desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
-        desired_caps['resetKeyboard'] = 'true'
+        # desired_caps['resetKeyboard'] = 'true'
         cls.driver = webdriver.Remote(remote, desired_caps)
 
+    '''
+    #  多个class执行的时候，会执行两次，暂时先去掉
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-        
+'''
     def test_case1_进入西药首页(self):  # 进入西药首页
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/tab_home_rb")))
         el1 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/tab_patient_rb")
@@ -44,6 +47,7 @@ class AddTaoc(unittest.TestCase):
             self.driver.find_element_by_xpath("//*[@text='添加用药套餐']").click()
 
     def test_case2_搜索药品(self):  # 搜索药品
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "com.kanchufang.privatedoctor:id/yf_et_template_input")))
         el6 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_et_template_input")
         el6.send_keys("test")
         self.driver.hide_keyboard()
