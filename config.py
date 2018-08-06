@@ -15,7 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from HTMLReport import logger
 
-remote = "http://localhost:4723/wd/hub"
+remote = "http://172.16.1.239:4723/wd/hub"
 
 
 def findelementbyid(self, element):
