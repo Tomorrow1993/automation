@@ -19,8 +19,8 @@ if __name__ == '__main__':
     # suite.addTests(loader.loadTestsFromTestCase(Login))
     suite.addTests(loader.loadTestsFromTestCase(Chat))
     # suite.addTests(loader.loadTestsFromTestCase(Payment))
-    suite.addTests(loader.loadTestsFromTestCase(CollectDrugs))
-    suite.addTests(loader.loadTestsFromTestCase(AddTaoc))
+    # suite.addTests(loader.loadTestsFromTestCase(CollectDrugs))
+    # suite.addTests(loader.loadTestsFromTestCase(AddTaoc))
     # suite.addTests(loader.loadTestsFromTestCase(SearchDrugs))
     # suite.addTests(loader.loadTestsFromTestCase(Zhongyao))
 
