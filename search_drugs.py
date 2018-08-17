@@ -10,14 +10,15 @@ class SearchDrugs(unittest.TestCase):
 	def setUpClass(cls):
 		desired_caps = {}
 		desired_caps['platformName'] = 'Android'
-		desired_caps['platformVersion'] = '8.1.0'  # 6.0 4.4.2
-		desired_caps['deviceName'] = 'db172033'  # 1bf493ad c66d2f78 emulator-555444
+		desired_caps['platformVersion'] = '8.1.0'  # 6.0 4.4.2 8.1.0
+		desired_caps['deviceName'] = 'db172033'  # 1bf493ad c66d2f78 emulator-555444 db172033
 		desired_caps['appPackage'] = 'com.kanchufang.privatedoctor'
 		desired_caps['appActivity'] = '.activities.start.SplashActivity'
 		desired_caps['noReset'] = 'true'
 		desired_caps['clearSystemFiles'] = 'true'
 		desired_caps['unicodeKeyboard'] = 'true'
-		# desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
+		desired_caps['resetKeyboard'] = 'true'
+		desired_caps['automationName'] = 'uiautomator2' # 支持android7.0版本+
 		cls.driver = webdriver.Remote(remote, desired_caps)
 
 	''' 
@@ -37,9 +38,10 @@ class SearchDrugs(unittest.TestCase):
 		el3.click()
 
 	def test_case2_点击搜索框搜索(self):  # 点击搜索框搜索
+		WebDriverWait(self.driver, 20).until(EC.visibility_of_any_elements_located((By.ID, "com.kanchufang.privatedoctor:id/yf_act_search")))
 		el4 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_act_search")
 		el4.click()
-		el4.send_keys('汤臣倍健')
+		el4.send_keys("汤臣倍健")
 		os.system('adb shell ime set com.sohu.inputmethod.sogou/.SogouIME')
 		sleep(2)
 		self.driver.press_keycode(66)

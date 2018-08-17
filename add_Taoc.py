@@ -71,6 +71,7 @@ class AddTaoc(unittest.TestCase):
         el10 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/yf_btn_add_recommend")
         el10.click()
         self.driver.press_keycode('4')
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_any_elements_located((By.ID, "com.kanchufang.privatedoctor:id/menu_save")))
         el11 = self.driver.find_element_by_id("com.kanchufang.privatedoctor:id/menu_save")
         el11.click()
 
